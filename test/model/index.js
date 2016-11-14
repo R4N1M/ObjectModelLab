@@ -15,7 +15,7 @@ import { main } from '../../src/model/main';
 // Recuperer les donnees du fichier sensors_data et instancier les objets
 var Donnees = main(data);
 
-// Commencer les tests : Appliquer les tests sur les donnees recuperéesdu fichier Jason
+// Commencer les tests : Appliquer les tests sur les donnees recuperéesdu fichier Json
 describe('Sensor model tests', () => {
   describe('test sur type', () => {
     it('le type de l"identifiant ', () => {
