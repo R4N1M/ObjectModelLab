@@ -4,6 +4,7 @@ import { Data,
           Sensor,
           Temperature,
           Door,
+          Humidity,
           FanSpeed,
           Light } from './index';
 
@@ -52,6 +53,30 @@ export function main(data) {
         break;
       case 'FAN_SPEED':
         Sensors[pas] = new FanSpeed(data[pas].id, data[pas].name);
+        if (typeof data[pas].data.value === 'undefined') {
+          Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
+        } else {
+          if (isNaN(parseInt(data[pas].data.value))) {
+            throw Error('On ne peut pas convertir des lettres en un entier');
+          } else {
+            Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
+          }
+        }
+        break;
+      case 'HUMIDITY':
+        Sensors[pas] = new Humidity(data[pas].id, data[pas].name);
+        if (typeof data[pas].data.value === 'undefined') {
+          Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
+        } else {
+          if (isNaN(parseInt(data[pas].data.value))) {
+            throw Error('On ne peut pas convertir des lettres en un entier');
+          } else {
+            Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
+          }
+        }
+        break;
+      case 'LIGHT':
+        Sensors[pas] = new Light(data[pas].id, data[pas].name);
         if (typeof data[pas].data.value === 'undefined') {
           Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
         } else {
