@@ -97,6 +97,65 @@ export class FanSpeed extends Sensor
   }
 }
 
+export class POSITIVE_NUMBER extends Sensor
+{
+  constructor(Id, Nom) {
+    super(Id, Nom);
+    this.type = 'POSITIVE_NUMBER';
+  }
+
+  get Type() {
+    return this.type || '';
+  }
+  set Type(val) {
+    this.type = val;
+  }
+}
+
+export class PERCENT extends Sensor
+{
+  constructor(Id, Nom) {
+    super(Id, Nom);
+    this.type = 'PERCENT';
+  }
+
+  get Type() {
+    return this.type || '';
+  }
+  set Type(val) {
+    this.type = val;
+  }
+}
+export class ON_OFF extends Sensor
+{
+  constructor(Id, Nom) {
+    super(Id, Nom);
+    this.type = 'ON_OFF';
+  }
+
+  get Type() {
+    return this.type || '';
+  }
+  set Type(val) {
+    this.type = val;
+  }
+}
+
+export class OPEN_CLOSE extends Sensor
+{
+  constructor(Id, Nom) {
+    super(Id, Nom);
+    this.type = 'OPEN_CLOSE';
+  }
+
+  get Type() {
+    return this.type || '';
+  }
+  set Type(val) {
+    this.type = val;
+  }
+}
+
 // la classe Data contient un objet de la classe sensors
 export class Data
 {
@@ -154,13 +213,13 @@ export class Datum extends Data
 {
   constructor(valeur, sensor) {
     super(sensor);
-    this.value = parseInt(valeur) || 0;
+    this.value = valeur.toString() || '';
   }
 
   get Value() {
-    return this.value || 0;
+    return this.value || '';
   }
   set Value(val) {
-    this.value = val;
+    this.value = val.toString();
   }
 }

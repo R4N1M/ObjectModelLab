@@ -6,7 +6,11 @@ import { Data,
           Door,
           Humidity,
           FanSpeed,
-          Light } from './index';
+          Light,
+          PERCENT,
+          POSITIVE_NUMBER,
+          ON_OFF,
+          OPEN_CLOSE } from './index';
 
 
 /* Cette fonction recupere les donnees du fichier Json et les stocke
@@ -32,11 +36,11 @@ export function main(data) {
         if (typeof data[pas].data.value === 'undefined') {
           Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
         } else {
-          if (isNaN(parseInt(data[pas].data.value))) {
+        /*  if (isNaN(parseInt(data[pas].data.value))) {
             throw Error('On ne peut pas convertir des lettres en un entier');
-          } else {
+          } else {*/
             Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
-          }
+        //  }
         } break;
 
       case 'DOOR':
@@ -44,49 +48,100 @@ export function main(data) {
         if (typeof data[pas].data.value === 'undefined') {
           Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
         } else {
-          if (isNaN(parseInt(data[pas].data.value))) {
+        /*  if (isNaN(parseInt(data[pas].data.value))) {
             throw Error('On ne peut pas convertir des lettres en un entier');
-          } else {
+          } else {*/
             Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
-          }
+        //  }
         }
         break;
+
       case 'FAN_SPEED':
         Sensors[pas] = new FanSpeed(data[pas].id, data[pas].name);
         if (typeof data[pas].data.value === 'undefined') {
           Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
         } else {
-          if (isNaN(parseInt(data[pas].data.value))) {
+        /*  if (isNaN(parseInt(data[pas].data.value))) {
             throw Error('On ne peut pas convertir des lettres en un entier');
-          } else {
+          } else {*/
             Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
-          }
+        //  }
         }
         break;
+
       case 'HUMIDITY':
         Sensors[pas] = new Humidity(data[pas].id, data[pas].name);
         if (typeof data[pas].data.value === 'undefined') {
           Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
         } else {
-          if (isNaN(parseInt(data[pas].data.value))) {
+        /*  if (isNaN(parseInt(data[pas].data.value))) {
             throw Error('On ne peut pas convertir des lettres en un entier');
-          } else {
+          } else {*/
             Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
-          }
+        //  }
         }
         break;
+
       case 'LIGHT':
         Sensors[pas] = new Light(data[pas].id, data[pas].name);
         if (typeof data[pas].data.value === 'undefined') {
           Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
         } else {
-          if (isNaN(parseInt(data[pas].data.value))) {
+      /*    if (isNaN(parseInt(data[pas].data.value))) {
             throw Error('On ne peut pas convertir des lettres en un entier');
-          } else {
+          } else {*/
             Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
-          }
+        //  }
         }
         break;
+
+      case 'POSITIVE_NUMBER':
+        Sensors[pas] = new POSITIVE_NUMBER(data[pas].id, data[pas].name);
+        if (typeof data[pas].data.value === 'undefined') {
+          Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
+        } else {
+        /*  if (isNaN(parseInt(data[pas].data.value))) {
+            throw Error('On ne peut pas convertir des lettres en un entier');
+          } else {*/
+            Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
+        //  }
+        } break;
+
+      case 'PERCENT':
+        Sensors[pas] = new PERCENT(data[pas].id, data[pas].name);
+        if (typeof data[pas].data.value === 'undefined') {
+          Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
+        } else {
+        /*  if (isNaN(parseInt(data[pas].data.value))) {
+            throw Error('On ne peut pas convertir des lettres en un entier');
+          } else {*/
+            Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
+        //  }
+        } break;
+
+      case 'ON_OFF':
+        Sensors[pas] = new ON_OFF(data[pas].id, data[pas].name);
+        if (typeof data[pas].data.value === 'undefined') {
+          Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
+        } else {
+        /*  if (isNaN(parseInt(data[pas].data.value))) {
+            throw Error('On ne peut pas convertir des lettres en un entier');
+          } else {*/
+            Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
+        //  }
+        } break;
+
+      case 'OPEN_CLOSE':
+        Sensors[pas] = new OPEN_CLOSE(data[pas].id, data[pas].name);
+        if (typeof data[pas].data.value === 'undefined') {
+          Data[pas] = new TimeSeries(data[pas].data.values, data[pas].data.labels, Sensors[pas]);
+        } else {
+        /*  if (isNaN(parseInt(data[pas].data.value))) {
+            throw Error('On ne peut pas convertir des lettres en un entier');
+          } else {*/
+            Data[pas] = new Datum(data[pas].data.value, Sensors[pas]);
+        //  }
+        } break;
 
       default:
         throw Error('Ce type n\'existe pas');
